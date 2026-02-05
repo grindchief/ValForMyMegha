@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For Megha ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #ffeef2;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            transition: background-color 0.5s ease;
+        }
+
+        #container {
+            text-align: center;
+            background: white;
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 400px;
+            z-index: 1;
+        }
+
+        .gif-container img {
+            width: 200px;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            color: #ff4d6d;
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            min-height: 100px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        #yesBtn {
+            background-color: #ff4d6d;
+            color: white;
+            z-index: 100;
+        }
+
+        #noBtn {
+            background-color: #888;
+            color: white;
+            position: relative;
+        }
+
+        #success {
+            display: none;
+        }
+
+        #success h2 {
+            color: #ff4d6d;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <div id="askSection">
+            <div class="gif-container">
+                <img id="mainGif" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3pueGZ4ZjR4bmR4ZnhyeHpxZHp4ZnhyeHpxZHp4ZnhyeHpxZHp4ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/iO6mGjS6XFfXmXj7Rz/giphy.gif" alt="Cute Hearts">
+            </div>
+            
+            <h1>Megha, will you be my Valentine? ❤️</h1>
+            
+            <div class="btn-wrapper">
+                <button id="yesBtn" onclick="celebrate()">Yes</button>
+                <button id="noBtn" onmouseover="dodge()">No</button>
+            </div>
+        </div>
+
+        <div id="success">
+            <div class="gif-container">
+                <img src="https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3pueGZ4ZjR4bmR4ZnhyeHpxZHp4ZnhyeHpxZHp4ZnhyeHpxZHp4ZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/LO9uO79LpX8yO8mO9p/giphy.gif" alt="Happy Celebration">
+            </div>
+            <h2>YAY! 🎉</h2>
+            <p>Pta hi tha, I Love You, Megha! ❤️</p>
+        </div>
+    </div>
+
+    <script>
+        const noBtn = document.getElementById('noBtn');
+        const yesBtn = document.getElementById('yesBtn');
+        const askSection = document.getElementById('askSection');
+        const successSection = document.getElementById('success');
+        const mainGif = document.getElementById('mainGif');
+
+        const messages = [
+            "Yes dabba Meghadi 😈",
+            "Are you sure, Megha?",
+            "Dukka maardunga",
+            "Think again!",
+            "Last chance!",
+            "Surely not?",
+            "You're breaking my heart! 💔"
+        ];
+        
+        let messageIndex = 0;
+        let scale = 1;
+
+        function dodge() {
+            // New Interactive Feature: Button moves even faster and further
+            const x = Math.random() * (window.innerWidth - noBtn.offsetWidth - 20);
+            const y = Math.random() * (window.innerHeight - noBtn.offsetHeight - 20);
+            
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = y + 'px';
+
+            // Change text with her name included
+            if (messageIndex < messages.length) {
+                noBtn.innerText = messages[messageIndex];
+                messageIndex++;
+            } else {
+                noBtn.innerText = "Just click Yes! 😘";
+            }
+
+            // Interactive: Yes button grows and pulsates
+            scale += 0.35;
+            yesBtn.style.transform = `scale(${scale})`;
+            
+            // Interactive: Background gets slightly redder the more they try to say No
+            const redIntensity = Math.min(255, 238 - (messageIndex * 10));
+            document.body.style.backgroundColor = `rgb(255, ${redIntensity}, ${redIntensity + 5})`;
+        }
+
+        function celebrate() {
+            askSection.style.display = 'none';
+            successSection.style.display = 'block';
+            document.body.style.backgroundColor = '#ffc1cf';
+        }
+    </script>
+</body>
+</html>
