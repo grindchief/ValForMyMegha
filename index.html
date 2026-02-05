@@ -82,6 +82,12 @@
             font-size: 32px;
             margin-bottom: 10px;
         }
+@keyframes glowPulse {
+  0% { background-color: #ffc1cf; }
+  50% { background-color: #ff9fb3; }
+  100% { background-color: #ffc1cf; }
+}
+
     </style>
 </head>
 <body>
@@ -156,10 +162,49 @@
         }
 
         function celebrate() {
-            askSection.style.display = 'none';
-            successSection.style.display = 'block';
-            document.body.style.backgroundColor = '#ffc1cf';
-        }
+    askSection.style.display = 'none';
+    successSection.style.display = 'block';
+    document.body.style.backgroundColor = '#ffc1cf';
+
+    const fireworksInterval = setInterval(fireworks, 500);
+
+    setTimeout(() => {
+        clearInterval(fireworksInterval);
+    }, 10000);
+}
+
     </script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+<script>
+function fireworks() {
+  // Big explosion
+  confetti({
+    particleCount: 160,
+    spread: 360,
+    startVelocity: 55,
+    gravity: 0.75,
+    ticks: 350,
+    origin: {
+      x: Math.random(),
+      y: Math.random() * 0.6
+    }
+  });
+
+  // Second explosion (offset)
+  confetti({
+    particleCount: 120,
+    spread: 300,
+    startVelocity: 45,
+    gravity: 0.85,
+    ticks: 300,
+    origin: {
+      x: Math.random(),
+      y: Math.random() * 0.6
+    }
+  });
+
+}
+</script>
+
 </body>
 </html>
